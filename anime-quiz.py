@@ -23,10 +23,10 @@ def newGame():
 # checks answer
 def check(answer, guess):
     if answer == guess:
-        print('Correct')
+        print('\033[34;1mCORRECT\033[m')
         return 1
     else:
-        print('Wrong')
+        print('\033[31;1mWRONG\033[m')
         return 0
 
 # asks user to play again
@@ -37,6 +37,10 @@ def playAgain():
         newGame()
     else:
         print('Goodbye Player!')
+
+def intro():
+    print ('\n\033[32mHello Player! Welcome to the Anime Quiz Game!\033[m\n')
+
 
 # dictionary for question and answers
 questionAns = {
@@ -60,4 +64,5 @@ choices = [
 ['a. One for All', 'b. Absolute Obedience', 'c. Amaterasu']]
 
 # main
+intro()
 newGame()
