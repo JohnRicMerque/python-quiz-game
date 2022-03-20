@@ -1,9 +1,31 @@
+#  anime quiz game python program 
+
+# initializes game
 def newGame ():
     qNum = 0
+    correct = 0
+
     for question in questionAns:
+        print('--------------------------')
         print(f'{qNum+1}. {question}')
-        print (choices[qNum])
+        for item in choices[qNum]:
+            print(item)
         qNum += 1
+
+        userAns = input('Enter Answer: ')
+        userAns = userAns.lower()
+
+        correct += check(questionAns.get(question),userAns)
+        print(f'score: {correct} / {qNum}')
+
+# checks answer
+def check(answer, guess):
+    if answer == guess:
+        print('Correct')
+        return 1
+    else:
+        print('Wrong')
+        return 0
 
 # dictionary for question and answers
 questionAns = {
@@ -24,6 +46,6 @@ choices = [
 ['a. Levi', 'b. Mikasa', 'c. Erwin'],
 ['a. Master Raya', 'b. Jira-senpai', 'c. Pervy Sage'],
 ['a. Male', 'b. Female'],
-['a. One for All', 'b.Absolute Obedience', 'c.Amaterasu']]
+['a. One for All', 'b. Absolute Obedience', 'c. Amaterasu']]
 
 newGame()
