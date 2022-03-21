@@ -16,8 +16,13 @@ def newGame():
         userAns = userAns.lower()
 
         correct += check(questionAns.get(question),userAns)
-        print(f'Score: {correct} / {qNum}')
+        print(f'Score: {correct} / {qNum}')    
+    percent = (correct/qNum)*100   
+  
     print('-----------------------------------------------------------------------------')
+    print(f" Score Percentage: {percent:.2f}%")
+    print('-----------------------------------------------------------------------------')
+    label(percent)
     playAgain()
 
 # checks answer
@@ -36,10 +41,20 @@ def playAgain():
     if tryAgain == 'y':
         newGame()
     else:
-        print('Goodbye Player!')
+        print('\nGoodbye Player!')
 
+# introduction
 def intro():
     print ('\n\033[32mHello Player! Welcome to the Anime Quiz Game!\033[m\n')
+
+# rating message after results
+def label(percent):
+    if int(percent) <= 33:
+        print("Rating: \033[31;1mNovice\033[m, vWatch more young one!")
+    elif int(percent) > 33 and int(percent) <= 66:
+        print("Rating: \033[33;1mIntermediate\033[m, Nice... GRAPE!")
+    else:
+        print('Rating: \033[34;1mExcellent\033[m, All heil player! Long Live!')
 
 
 # dictionary for question and answers
